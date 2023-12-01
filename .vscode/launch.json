@@ -12,6 +12,20 @@
                 "<node_internals>/**"
             ],
             "type": "node"
+        },
+        {
+            "name": "dev",
+            "request": "launch",
+            "runtimeArgs": [
+                "run-script",
+                "dev",
+                "1"
+            ],
+            "runtimeExecutable": "npm",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
         }
     ]
 }
