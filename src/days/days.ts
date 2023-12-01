@@ -1,3 +1,3 @@
-import { Day as Day0 } from './day0';
+import { Day as Day1 } from './day1';
 
-export const Days = [Day0]; 
+export const Days = [Day1]; 
