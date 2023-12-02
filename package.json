@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rimraf ./build && tsc",
     "start": "npm run build && node build/src/index.js",
-    "setup": "node setup.js",
+    "setup": "node setup.mjs",
     "dev":"ts-node ./src/index.ts",
     "test": "ts-mocha test/*.ts"
   },
