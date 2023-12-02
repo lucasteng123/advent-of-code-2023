@@ -1,50 +1,49 @@
 import { IDay, IPart } from '../internalTypes';
 
+interface IGameMaximums {
+  red: number, 
+  green: number, 
+  blue: number
+}
+
 interface IGameOptions {
-  redMax: number, 
-  greenMax: number, 
+  redMax: number,
+  greenMax: number,
   blueMax: number
 }
 
-const checkGameLegality = (rounds: Array<string> , options: IGameOptions) => {
-
-  const trimmedRounds = rounds.map(round => {
-    return round.replaceAll(/\s+/g, '');
-  });
-
-  for (const round of trimmedRounds ){
-    const colors = round.split(',');
-    for(const color of colors ) {
-      const quantity:string = color.match(/\d+/)![0];
-      const colorCode = color[quantity.length];
-
-      switch (colorCode) {
-      case 'r':
-        if(Number(quantity) > options.redMax) return false;
-        break;
-        
-      case 'g':
-        if(Number(quantity) > options.greenMax) return false;
-        break;
-
-      case 'b':
-        if(Number(quantity) > options.blueMax) return false;
-        break;
-    
-      }
-    }
+const getHighestColorsInGame = (game: Array<string>): IGameMaximums => {
+  let red = 0;
+  let green = 0;
+  let blue = 0;
+  for (const round of game) {
+    const [score, color] = round.trim().split(' ');
+    if(color === 'red' && Number(score) > red) red = Number(score);
+    if(color === 'green' && Number(score) > green) green = Number(score);
+    if(color === 'blue' && Number(score) > blue) blue = Number(score);
   }
-  return true;
+  return {
+    red,
+    green, 
+    blue
+  };
+};
+
+const checkGameLegality = (highestValues: IGameMaximums , options: IGameOptions) => {
+  return highestValues.red <= options.redMax && highestValues.green <= options.greenMax && highestValues.blue <= options.blueMax;
 };
 
 const extractGames = (input: string) => {
-  return input.split('\n').map((game, index)=> {
-    const colonIndex = game.indexOf(':');
-    const gameText =  game.substring(colonIndex+1);
-    const rounds = gameText.split(';').map(round=>round.replaceAll(/\s+/g, ''));
+  return input.split('\n').map((game)=> {
+    const gameText = game.split(':')[1];
+    //rounds can be expressed as individual brick pulls, instead of the defined "round"
+    const rounds = gameText.split(/[,;]/);
     return rounds;
   });
 };
+
+
+// PART 1 ========
 const part1: IPart = (input) => {
   const redMax = 12;
   const greenMax = 13; 
@@ -52,60 +51,24 @@ const part1: IPart = (input) => {
 
   let gameSum = 0;
 
-  input.split('\n').map((game, index)=> {
-    const colonIndex = game.indexOf(':');
-    const gameText =  game.substring(colonIndex+1);
-    const rounds = gameText.split(';');
-    if(checkGameLegality(rounds, {redMax, greenMax, blueMax})) {
-      gameSum += (index+1);
-    }
-  });
-
-
+  extractGames(input).forEach((game,index)=>{
+    if(checkGameLegality(getHighestColorsInGame(game), {redMax, greenMax, blueMax})) gameSum += (index+1);
+  }); 
   return gameSum;
 };
 
+// PART 2 ========
 const part2: IPart = (input) => {
-  const games = extractGames(input);
-
   let score = 0;
-  
-  for (const game of games) {
-    let highestR = 0;
-    let highestG = 0;
-    let highestB = 0;
 
-    for (const round of game ){
-      const colors = round.split(',');
-      for(const color of colors ) {
-        const quantity:string = color.match(/\d+/)![0];
-        const colorCode = color[quantity.length];
-  
-        switch (colorCode) {
-        case 'r':
-          if(Number(quantity) > highestR) highestR = Number(quantity);
-          break;
-          
-        case 'g':
-          if(Number(quantity) > highestG) highestG = Number(quantity);
-          
-          break;
-  
-        case 'b':
-          if(Number(quantity) > highestB) highestB = Number(quantity);
-
-          break;
-      
-        }
-      }
-    }
-
-    score += (highestR * highestG * highestB);
-    
+  for(const game of extractGames(input)){
+    const maximum = getHighestColorsInGame(game);
+    score+=(maximum.red*maximum.green*maximum.blue);
   }
-
   return score;
 };
+
+
 
 export const Day: IDay = {
   part1,
