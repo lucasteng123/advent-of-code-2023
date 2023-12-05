@@ -30,10 +30,10 @@ aocLoader(Number(process.env.AOC_YEAR), TEST_DAY, process.env.AOC_SESSION)
   });
 
 
-const runDay = (day:IDay, input:string) => {
+const runDay = async (day:IDay, input:string) => {
   console.log('Part 1');
-  console.log(day.part1(input));
+  console.log(await day.part1(input));
 
   console.log('Part 2');
-  console.log(day.part2(input));
+  console.log(await day.part2(input));
 };
