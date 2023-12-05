@@ -23,3 +23,9 @@ I really did overcomplicate this, refactored it to be much simpler
 - instead of the complicated string manipulation, I can instead split the number and color by the space that is between them. `2 red`
 - instead of looking at the round as any number of `number color` pairs, splitting each pair into it's own "round" made things a lot easier as well. 
 
+# Day 5
+Today was fairly difficult, I went through the process of writing out an implementation before I went ahead and implemented it. This was a great help, as it allowed me to quickly find out that one of the assumptions I was making was quit incorrect. 
+
+Part 2 was a huge undertaking, that will be something I return to and optimize, but for now the feature functions. 
+
+[Day 5 Design]('./src/design/day5.md')

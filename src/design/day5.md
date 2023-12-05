@@ -22,5 +22,10 @@ one assumption I got wrong:
 
 The seed inputs are not individual seeds, they are ranges of seeds.
 These are going to be MASSIVE
-My first try at this is going to be the CPU GO BRR method, then I will try and do some optimization
 
+My first try at this is going to be the CPU GO BRR method, then I will try and do some optimization.
+Cpu go BRR method worked, improved significantly through the power of ✨ worker threads ✨. 
+
+first thing I want to try is to see if there is overlap in the seed numbers, so we aren't checking the same paths over and over again
+
+Second thing, the outputs are generally sequential, until you get to the next threshold. We can use this to our advantage, skipping large amounts of numbers by also returning what the next threshold seed number would be for each group. 
