@@ -26,7 +26,7 @@ const calculateWinningNumbers = (time:number, distance: number): number => {
   }
 
 
-}
+};
 
 const part1: IPart = (input) => {
   const [timeLine, distanceLine] = input.split('\n');
