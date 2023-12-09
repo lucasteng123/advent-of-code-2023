@@ -1,4 +1,4 @@
-# advent-of-code-2022
+# Advent of Code 2023
 
 # Day 1
 It's good to be back. 
