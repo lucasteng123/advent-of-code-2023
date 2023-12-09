@@ -28,7 +28,7 @@ Today was fairly difficult, I went through the process of writing out an impleme
 
 Part 2 was a huge undertaking, that will be something I return to and optimize, but for now the feature functions. 
 
-[Day 5 Design]('./src/design/day5.md')
+[Day 5 Design](src/design/day5.md)
 
 # Day 6
 Day 6 was suspiciously easy. Quick regex to get the values, then solve for the roots of a quadratic, the difference of which is the amount of times I would win. The only thing that tripped me up is I `.floor()`'d the values of the roots to get integer ms. Some of the roots were already integers, so were high by 1. 
