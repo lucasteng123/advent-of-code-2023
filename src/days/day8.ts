@@ -1,4 +1,5 @@
 import { IDay, IPart } from '../internalTypes';
+import { findLCM } from '../utils';
 
 type Direction = 'R' | 'L'
 
@@ -11,7 +12,7 @@ const parseNodes = (lines: Array<string>): {[node: string]: INode} => {
   const nodes: {[node:string]: INode} = {};
   lines.forEach(line => {
     const [key, node] = line.split(' = ');
-    const [left, right] = node.matchAll(/[A-Z]{3}/g);
+    const [left, right] = node.matchAll(/[A-Z\d]{3}/g);
     nodes[key] = {
       leftNode:left[0],
       rightNode: right[0]
@@ -20,10 +21,11 @@ const parseNodes = (lines: Array<string>): {[node: string]: INode} => {
   return nodes;
 };
 
-const traverseMapNodes = (directions: Array<Direction>, nodes: {[node:string]:INode}, startingNode: string, endNode: string): number => {
+
+const traverseMapNodes = (directions: Array<Direction>, nodes: {[node:string]:INode}, startingNode: string, end: (node: string)=>boolean): number => {
   let currentNode = startingNode;
   let steps = 0;
-  while (currentNode !== endNode) {
+  while (!end(currentNode)) {
     if(directions[steps%directions.length] === 'L' ) currentNode = nodes[currentNode].leftNode;
     else currentNode = nodes[currentNode].rightNode;
     steps++;
@@ -37,13 +39,18 @@ const part1: IPart = (input) => {
   const directions: Array<Direction> = directionLines.trim().split('') as Array<Direction>;
   const nodes = parseNodes(nodeLines.split('\n'));
 
-
-
-  return traverseMapNodes(directions, nodes, 'AAA', 'ZZZ');
+  return traverseMapNodes(directions, nodes, 'AAA', (n)=>n==='ZZZ');
 };
 
 const part2: IPart = (input) => {
-  return '';
+  const [directionLines, nodeLines] = input.split('\n\n');
+
+  const directions: Array<Direction> = directionLines.trim().split('') as Array<Direction>;
+  const nodes = parseNodes(nodeLines.split('\n'));
+  const startingNodes = Object.keys(nodes).filter(node=>node.slice(-1)==='A');
+
+  const ghostLoopPeriods = startingNodes.map(startingNode => traverseMapNodes(directions,nodes,startingNode,(n)=>n.slice(-1)==='Z'));
+  return findLCM(ghostLoopPeriods);
 };
 
 export const Day: IDay = {
