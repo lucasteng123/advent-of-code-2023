@@ -49,9 +49,9 @@ Day 6 was suspiciously easy. Quick regex to get the values, then solve for the r
 
 # Day 7
 
-These card hands remind me of the fantastic TCG/LCG (Doomtown)[https://pineboxentertainment.com/doomtown/]. These hands definitely are not legal poker hands. With that I do have some effects to resolve
+These card hands remind me of the fantastic TCG/LCG [Doomtown](https://pineboxentertainment.com/doomtown/). These hands definitely are not legal poker hands. With that I do have some effects to resolve
 
-!(Cheatin')[https://d1rw89lz12ur5s.cloudfront.net/photo/categoryonegames/file/b1ae47b00a4911e980d6e7465a739109/ata_snakebite.jpg]
+![Cheatin'](https://d1rw89lz12ur5s.cloudfront.net/photo/categoryonegames/file/b1ae47b00a4911e980d6e7465a739109/ata_snakebite.jpg)
 
 With that out of the way, and some of your `dudes` `aced`, we get to the problem at hand.
 
