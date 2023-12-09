@@ -28,7 +28,7 @@ describe('Day 8', ()=>{
   });
 
 
-  it.only('should run part 2', ()=>{
+  it('should run part 2', ()=>{
     assert.equal(Day.part2(input2),6);
   });
 });

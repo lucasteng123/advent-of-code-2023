@@ -1,5 +1,4 @@
 import { IDay, IPart } from '../internalTypes';
-import { parseInput } from '../utils';
 
 const extractNumbersFromLine = (line: string) => {
   const chars = line.split('');
@@ -9,7 +8,7 @@ const extractNumbersFromLine = (line: string) => {
 
 //input will be in the form of lines of text, each with its own 
 const part1: IPart = (input) => {
-  const lines = parseInput(input);
+  const lines = input.split('\n');
   const digits = lines.map((line)=>extractNumbersFromLine(line));
   const sum = digits.reduce((acc, cv)=> acc+cv, 0);
 
@@ -17,7 +16,7 @@ const part1: IPart = (input) => {
 };
 
 const part2: IPart = (input) => {
-  const lines = parseInput(input);
+  const lines = input.split('\n');
   const extractedLines = lines.map(line => {
     return line.split('')
       .map((char, idx)=>{
