@@ -18,3 +18,13 @@ export const findLCM = (range:Array<number>): number => {
 
   return multiple;
 };
+
+
+export interface I2DPoint {
+  x: number,
+  y: number
+}
+
+export const manhattanDistance = (a:I2DPoint, b:I2DPoint):number => {
+  return Math.abs(a.x-b.x) + Math.abs(a.y-b.y);
+};

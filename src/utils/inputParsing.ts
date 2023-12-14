@@ -13,6 +13,10 @@ class AOCInput {
   toLinesAsNumberArray() {
     return this.inputString.split('\n').map(line=>line.split(' ').map(chr => Number(chr)));
   }
+  
+  toLinesAsStringArray() {
+    return this.inputString.split('\n').map(ln=>ln.split(''));
+  }
 }
 
 
