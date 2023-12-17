@@ -21,8 +21,8 @@ const expandUniverse = (grid: Array<Array<string>>, quantity: number): IExpanded
     });
   });
   
-  rowsToAdd.sort(sortAsc)
-  columnsToAdd.sort(sortAsc)
+  rowsToAdd.sort(sortAsc);
+  columnsToAdd.sort(sortAsc);
 
   
  
@@ -35,7 +35,7 @@ const expandUniverse = (grid: Array<Array<string>>, quantity: number): IExpanded
 type IUniverse = I2DPoint;
 
 
-const sumPoints = (universes: Array<IUniverse>, expansion: IExpandedUniverse["expansion"]): number => {
+const sumPoints = (universes: Array<IUniverse>, expansion: IExpandedUniverse['expansion'], expansionQuantity: number): number => {
   const countEmptySpaceBetween = (
     a: IUniverse,
     b: IUniverse,
@@ -61,7 +61,11 @@ const sumPoints = (universes: Array<IUniverse>, expansion: IExpandedUniverse["ex
     for(let b = 0; b<universes.length; b++){
       const key = a < b ? `${a+1}|${b+1}` : `${b+1}|${a+1}`;
       if(!distances[key] && a!==b){
-        distances[key] = manhattanDistance(universes[a], universes[b])+;
+        const countSpace = countEmptySpaceBetween(universes[a], universes[b], expansion.x, 'x') + countEmptySpaceBetween(universes[a], universes[b], expansion.y, 'y');
+        distances[key] = manhattanDistance(universes[a], universes[b]) + countSpace * (expansionQuantity);
+        if(a==4 && b==8 && expansionQuantity == 100) {
+          console.log('');
+        }
       }
     }
   }
@@ -70,7 +74,7 @@ const sumPoints = (universes: Array<IUniverse>, expansion: IExpandedUniverse["ex
 };
 
 const solve = (input: string, expansionQuantity: number): number => {
-  const {grid, expansion} = expandUniverse(parseInput(input).toLinesAsStringArray(), expansionQuantity) + ;
+  const {grid, expansion} = expandUniverse(parseInput(input).toLinesAsStringArray(), expansionQuantity);
 
   const universes: Array<IUniverse> = [];
 
@@ -83,20 +87,16 @@ const solve = (input: string, expansionQuantity: number): number => {
 
   
 
-  return sumPoints(universes, expansion);
+  return sumPoints(universes, expansion, expansionQuantity);
   
-}
+};
 const part1: IPart = (input) => {
   return solve(input, 1);
   
 };
 
 const part2: IPart = (input) => {
-
-
-  
-
-  return solve(input, 10);
+  return solve(input, 100);
 };
 
 export const Day: IDay = {

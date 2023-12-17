@@ -9,8 +9,9 @@ import { Day as Day8 } from './day8';
 import { Day as Day9 } from './day9';
 import { Day as Day10 } from './day10';
 import { Day as Day11 } from './day11';
+import { Day as Day12 } from './day12';
 
 
 
 
-export const Days = [Day1, Day2, Day3, Day4, Day5, Day6, Day7, Day8, Day9, Day10, Day11]; 
+export const Days = [Day1, Day2, Day3, Day4, Day5, Day6, Day7, Day8, Day9, Day10, Day11, Day12]; 

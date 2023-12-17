@@ -1,0 +1,108 @@
+{
+    "cells": [
+        {
+            "language": "markdown",
+            "source": [
+                "# Day 12\n\nwe need to find all of the permutations of a set of broken springs\n\nthese springs are described as such\n\n`???.### 1,1,3`\n\neach of those ??? is an unknown record\n\nthe numbers at the end describe how many broken springs (in groups) there are total\n\nin this example, this can only work out to being 1 permutation\n`#.#.###`\n(with those first 3 `???` turning into `#.#`)\n\n\nfirst we need to sort out if something is even valid, by creating a `configuration` from the input `positions`\n\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "const positions = '#.#.###' \nconst configuration = [1,1,3]\n\n\nconst createConfiguration = (positions: string): number[] => {\n    let counts = positions.split('.').filter(x=>x.length>0).map(x=>x.length)\n    return counts\n}\nconsole.log(createConfiguration(positions).join(',') === configuration.join(','))\n"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "true",
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "Let's generate some valid permutations (storing only if it is valid). "
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "const pos = '.??..??...?##.'\nconst conf = [1,1,3]\n\nlet validPerms: string[] = []\nconst recurse = (positions: string, configuration: number[]):number =>{\n    if([...positions.matchAll(/\\?/g)].length === 0){\n        if(createConfiguration(positions).join(',')===configuration.join(',')){\n            validPerms.push(positions)\n            return 1\n        }\n        return 0\n        \n    }\n\n    let sum = 0\n    sum += recurse(positions.replace('?', '.'), configuration)\n    sum += recurse(positions.replace('?', '#'), configuration)\n    return sum\n}\n\nrecurse(pos,conf)\nconsole.log(validPerms)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "[",
+                                "  '..#...#...###.',",
+                                "  '..#..#....###.',",
+                                "  '.#....#...###.',",
+                                "  '.#...#....###.'",
+                                "]",
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "We will try it with a more intense example"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "validPerms = [];\n\nrecurse('?###????????', [3,2,1])\nconsole.log(validPerms)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "[",
+                                "  '.###....##.#',",
+                                "  '.###...##..#',",
+                                "  '.###...##.#.',",
+                                "  '.###..##...#',",
+                                "  '.###..##..#.',",
+                                "  '.###..##.#..',",
+                                "  '.###.##....#',",
+                                "  '.###.##...#.',",
+                                "  '.###.##..#..',",
+                                "  '.###.##.#...'",
+                                "]",
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "# Part 2\nI cannot rely on just the brute force for the second part here. \n\nSome things that can be done to help with this: \n\n- there is not a difference between `.....` and `.`\n\n"
+            ],
+            "outputs": []
+        }
+    ]
+}

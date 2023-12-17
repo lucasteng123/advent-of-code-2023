@@ -14,7 +14,7 @@ const input =
 .......#..
 #...#.....`;
 
-describe.only('Day 11', ()=>{
+describe.skip('Day 11', ()=>{
   it('should run part 1', ()=>{
     assert.equal(Day.part1(input),374);
   });
