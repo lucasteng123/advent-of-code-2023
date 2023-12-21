@@ -1,6 +1,8 @@
 import { IDay, IPart } from '../internalTypes';
 
-const part1: IPart = (input) => {
+const part1: IPart = (aocInput) => {
+  const input = aocInput.string;
+
   
   const lines = input.split('\n');
   let partNumberSum = 0;
@@ -38,7 +40,9 @@ const isPartAdjacent = (part: IPartNumber, index:number)=>{
   return part.start-1 <= index && index <= part.end+1;
 };
 
-const part2: IPart = (input) => {
+const part2: IPart = (aocInput) => {
+  const input = aocInput.string;
+
   const lines = input.split('\n');
 
   let gearRatios = 0;

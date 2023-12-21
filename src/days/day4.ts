@@ -37,7 +37,7 @@ const getCards = (lines: Array<string>): Array<Card> => {
 };
 
 const part1: IPart = (input) => {
-  const lines = input.split('\n');
+  const lines = input.toLines();
   //split the card in half, remove the card index
 
   const cards = getCards(lines);
@@ -47,7 +47,7 @@ const part1: IPart = (input) => {
 };
 
 const part2: IPart = (input) => {
-  const lines = input.split('\n');
+  const lines = input.toLines();
   const cards = getCards(lines);
   const cardCopies = Array<number>(cards.length).fill(1);
   

@@ -1,21 +1,22 @@
 import assert from 'assert';
 
 import { Day } from '../src/days/day1';
+import { parseInput } from '../src/utils/inputParsing';
 
 const exampleInputPart1 = 
-`1abc2
+parseInput(`1abc2
 pqr3stu8vwx
 a1b2c3d4e5f
-treb7uchet`;
+treb7uchet`);
 
 const exampleInputPart2 = 
-`two1nine
+parseInput(`two1nine
 eightwothree
 abcone2threexyz
 xtwone3four
 4nineeightseven2
 zoneight234
-7pqrstsixteen`;
+7pqrstsixteen`);
 
 describe('Day 1', ()=>{
   it('should run part 1', ()=>{

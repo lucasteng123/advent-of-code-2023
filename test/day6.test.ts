@@ -1,10 +1,11 @@
 import assert from 'assert';
 
 import { Day } from '../src/days/day6';
+import { parseInput } from '../src/utils/inputParsing';
 
 const input = 
-`Time:      7  15   30
-Distance:  9  40  200`;
+parseInput(`Time:      7  15   30
+Distance:  9  40  200`);
 
 describe('Day 6', ()=>{
   it('should run part 1', ()=>{

@@ -1,8 +1,9 @@
 import assert from 'assert';
 
 import { Day } from '../src/days/day5';
+import { parseInput } from '../src/utils/inputParsing';
 
-const input = 
+const inputText = 
 `seeds: 79 14 55 13
 
 seed-to-soil map:
@@ -36,6 +37,8 @@ temperature-to-humidity map:
 humidity-to-location map:
 60 56 37
 56 93 4`;
+
+const input = parseInput(inputText);
 
 describe('Day 5', ()=>{
   it('should run part 1', ()=>{

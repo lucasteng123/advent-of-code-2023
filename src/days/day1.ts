@@ -7,7 +7,8 @@ const extractNumbersFromLine = (line: string) => {
 };
 
 //input will be in the form of lines of text, each with its own 
-const part1: IPart = (input) => {
+const part1: IPart = (aocInput) => {
+  const input = aocInput.string;
   const lines = input.split('\n');
   const digits = lines.map((line)=>extractNumbersFromLine(line));
   const sum = digits.reduce((acc, cv)=> acc+cv, 0);
@@ -15,7 +16,9 @@ const part1: IPart = (input) => {
   return sum;
 };
 
-const part2: IPart = (input) => {
+const part2: IPart = (aocInput) => {
+  const input = aocInput.string;
+
   const lines = input.split('\n');
   const extractedLines = lines.map(line => {
     return line.split('')

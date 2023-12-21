@@ -100,7 +100,7 @@
         {
             "language": "markdown",
             "source": [
-                "# Part 2\nI cannot rely on just the brute force for the second part here. \n\nSome things that can be done to help with this: \n\n- there is not a difference between `.....` and `.`\n\n"
+                "# Part 2\nI cannot rely on just the brute force for the second part here. \n\nSome things that can be done to help with this: \n\n- there is not a difference between `.....` and `.`\n- there are many reasons to bail early out of each branch before we continue to the lower layer\n    - The final group of the sub-branch has too many `###` in it (as it is being generated left to right, and is unfinished)\n    - Any of the completed groups of the sub-branch are not the right number\n    - if we don't have enough room left to add the required `#`\n\n"
             ],
             "outputs": []
         }

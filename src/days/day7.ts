@@ -58,7 +58,7 @@ const sorter = (a: Hand,b: Hand): number=>{
 
 
 const part1: IPart = (input) => {
-  const handLines = input.split('\n');
+  const handLines = input.toLines('\n');
   const hands = handLines.map(line=>parseHand(line, false));
   hands.sort(sorter);
 
@@ -67,7 +67,7 @@ const part1: IPart = (input) => {
 
 const part2: IPart = (input) => {
 
-  const handLines = input.split('\n');
+  const handLines = input.toLines('\n');
   const hands = handLines.map(line=>parseHand(line, true));
   hands.sort(sorter);
 

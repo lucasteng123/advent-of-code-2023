@@ -29,7 +29,7 @@ const calculateWinningNumbers = (time:number, distance: number): number => {
 };
 
 const part1: IPart = (input) => {
-  const [timeLine, distanceLine] = input.split('\n');
+  const [timeLine, distanceLine] = input.toLines('\n');
 
   const times = [...timeLine.matchAll(/\d+/g)];
   const distances = [...distanceLine.matchAll(/\d+/g)];
@@ -40,7 +40,7 @@ const part1: IPart = (input) => {
 };
 
 const part2: IPart = (input) => {
-  const [timeLine, distanceLine] = input.split('\n');
+  const [timeLine, distanceLine] = input.toLines('\n');
 
   const time = Number([...timeLine.matchAll(/\d+/g)].map(match=>match[0]).join(''));
   const distance = Number([...distanceLine.matchAll(/\d+/g)].map(match=>match[0]).join(''));
