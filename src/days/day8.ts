@@ -34,7 +34,7 @@ const traverseMapNodes = (directions: Array<Direction>, nodes: {[node:string]:IN
 };
 
 const part1: IPart = (input) => {
-  const [directionLines, nodeLines] = input.split('\n\n');
+  const [directionLines, nodeLines] = input.toLines('\n\n');
 
   const directions: Array<Direction> = directionLines.trim().split('') as Array<Direction>;
   const nodes = parseNodes(nodeLines.split('\n'));
@@ -43,7 +43,7 @@ const part1: IPart = (input) => {
 };
 
 const part2: IPart = (input) => {
-  const [directionLines, nodeLines] = input.split('\n\n');
+  const [directionLines, nodeLines] = input.toLines('\n\n');
 
   const directions: Array<Direction> = directionLines.trim().split('') as Array<Direction>;
   const nodes = parseNodes(nodeLines.split('\n'));

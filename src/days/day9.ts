@@ -1,5 +1,4 @@
 import { IDay, IPart } from '../internalTypes';
-import { parseInput } from '../utils/inputParsing';
 
 //assume a 3 layer example
 // 1,3,6,10,15,21
@@ -22,13 +21,13 @@ const extrapolateValue = (values: Array<number>, forwards: boolean = true): numb
 };
 
 const part1: IPart = (input) => {
-  const valueHistories = parseInput(input).toLinesAsNumberArray();
+  const valueHistories = input.toLinesAsNumberArray();
   
   return valueHistories.map(history => extrapolateValue(history)).reduce((acc:number, extrapolatedValue)=>acc+extrapolatedValue);
 };
 
 const part2: IPart = (input) => {
-  const valueHistories = parseInput(input).toLinesAsNumberArray();
+  const valueHistories = input.toLinesAsNumberArray();
   
   return valueHistories.map(history => extrapolateValue(history, false)).reduce((acc:number, extrapolatedValue)=>acc+extrapolatedValue);
 };

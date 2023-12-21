@@ -91,12 +91,12 @@ const solve = (input: string, expansionQuantity: number): number => {
   
 };
 const part1: IPart = (input) => {
-  return solve(input, 1);
+  return solve(input.string, 1);
   
 };
 
 const part2: IPart = (input) => {
-  return solve(input, 100);
+  return solve(input.string, 100);
 };
 
 export const Day: IDay = {

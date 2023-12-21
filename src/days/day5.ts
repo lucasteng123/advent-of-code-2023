@@ -70,7 +70,7 @@ export const translateSeed =
   };
 
 const part1: IPart = (input) => {
-  const [seedLine, ...transformationLines] = input.split('\n\n');
+  const [seedLine, ...transformationLines] = input.toLines('\n\n');
   const seeds = seedLine.split(':')[1].trim().split(' ').map(n=>Number(n));
 
   const translations = parseTranslations(transformationLines);
@@ -114,7 +114,7 @@ const processSeedRange = (seedRange: SeedRange, translations: Array<Array<Transl
 };
 
 const part2: IPart = async (input) => {
-  const [seedLine, ...translationLines] = input.split('\n\n');
+  const [seedLine, ...translationLines] = input.toLines('\n\n');
 
   const seedNumbers = seedLine.split(':')[1].trim().split(' ');
 

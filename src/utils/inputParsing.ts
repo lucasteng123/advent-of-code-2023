@@ -1,9 +1,11 @@
-
-
-class AOCInput {
+export class AOCInput {
   inputString: string;
   constructor(input: string){
     this.inputString = input;
+  }
+
+  get string() {
+    return this.inputString;
   }
 
   toLines(chr:string = '\n') {

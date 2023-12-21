@@ -1,6 +1,7 @@
 import assert from 'assert';
 
 import { Day } from '../src/days/day8';
+import { parseInput } from '../src/utils/inputParsing';
 
 const input2 = 
 `LR
@@ -18,17 +19,17 @@ describe('Day 8', ()=>{
   it('should run part 1 example 1', ()=>{
     const input = 'RL\n\nAAA = (BBB, CCC)\nBBB = (DDD, EEE)\nCCC = (ZZZ, GGG)\nDDD = (DDD, DDD)\nEEE = (EEE, EEE)\nGGG = (GGG, GGG)\nZZZ = (ZZZ, ZZZ)';
 
-    assert.equal(Day.part1(input), 2);
+    assert.equal(Day.part1( parseInput(input)), 2);
   });
 
   it('should run part 1 example 2', ()=>{
     const input = 'LLR\n\nAAA = (BBB, BBB)\nBBB = (AAA, ZZZ)\nZZZ = (ZZZ, ZZZ)';
 
-    assert.equal(Day.part1(input), 6);
+    assert.equal(Day.part1(parseInput(input)), 6);
   });
 
 
   it('should run part 2', ()=>{
-    assert.equal(Day.part2(input2),6);
+    assert.equal(Day.part2(parseInput(input2)),6);
   });
 });

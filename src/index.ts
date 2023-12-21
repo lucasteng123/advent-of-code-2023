@@ -2,6 +2,7 @@ import aocLoader from 'aoc-loader';
 import { Days } from './days/days';
 import dotenv from 'dotenv';
 import { IDay } from './internalTypes';
+import { parseInput } from './utils/inputParsing';
 
 dotenv.config();
 
@@ -31,9 +32,11 @@ aocLoader(Number(process.env.AOC_YEAR), TEST_DAY, process.env.AOC_SESSION)
 
 
 const runDay = async (day:IDay, input:string) => {
+  const aocInput = parseInput(input);
+
   console.log('Part 1');
-  console.log(await day.part1(input));
+  console.log(await day.part1(aocInput));
 
   console.log('Part 2');
-  console.log(await day.part2(input));
+  console.log(await day.part2(aocInput));
 };

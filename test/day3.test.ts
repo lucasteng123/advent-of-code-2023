@@ -1,9 +1,10 @@
 import assert from 'assert';
 
 import { Day } from '../src/days/day3';
+import { parseInput } from '../src/utils/inputParsing';
 
 const input = 
-`467..114..
+parseInput(`467..114..
 ...*......
 ..35..633.
 ......#...
@@ -12,7 +13,7 @@ const input =
 ..592.....
 ......755.
 ...$.*....
-.664.598..`;
+.664.598..`);
 
 
 

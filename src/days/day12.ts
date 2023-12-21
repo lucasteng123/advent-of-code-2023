@@ -110,7 +110,7 @@ const getArrangements = ({positions, configuration}: Record): number => {
 const part1: IPart = (input) => {
 
   // operational . damaged # unknown ? 
-  const records: Record[] = parseInput(input).toLines().map(line=>{
+  const records: Record[] = input.toLines().map(line=>{
     const [positions, hash] = line.split(' ');
     return {positions, configuration: hash.split(',').map(x=>parseInt(x))};
   });
@@ -122,7 +122,7 @@ const part1: IPart = (input) => {
 };
 
 const part2: IPart = (input) => {
-  const records: Record[] = parseInput(input).toLines().map(line=>{
+  const records: Record[] = input.toLines().map(line=>{
     let [positions, hash] = line.split(' ');
     
     positions=positions+'?'+positions+'?'+positions+'?'+positions+'?'+positions;

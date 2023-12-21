@@ -44,7 +44,9 @@ const extractGames = (input: string) => {
 
 
 // PART 1 ========
-const part1: IPart = (input) => {
+const part1: IPart = (aocInput) => {
+  const input = aocInput.string;
+
   const redMax = 12;
   const greenMax = 13; 
   const blueMax = 14;
@@ -58,7 +60,9 @@ const part1: IPart = (input) => {
 };
 
 // PART 2 ========
-const part2: IPart = (input) => {
+const part2: IPart = (aocInput) => {
+  const input = aocInput.string;
+
   let score = 0;
 
   for(const game of extractGames(input)){
